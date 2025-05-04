@@ -24,12 +24,12 @@ void USART1_Init(uint32_t baudrate)
 	
 	//配置串口
     USART_InitTypeDef usart;
-    usart.USART_BaudRate = baudrate;
-    usart.USART_WordLength = USART_WordLength_8b;
-    usart.USART_StopBits = USART_StopBits_1;
+    usart.USART_BaudRate = baudrate;//波特率
+    usart.USART_WordLength = USART_WordLength_8b;//8位长度
+    usart.USART_StopBits = USART_StopBits_1;//停止位
     usart.USART_Parity = USART_Parity_No;
     usart.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-    usart.USART_Mode = USART_Mode_Tx | USART_Mode_Rx;
+    usart.USART_Mode = USART_Mode_Tx | USART_Mode_Rx;//
     USART_Init(USARTx, &usart);
 
     USART_Cmd(USARTx, ENABLE);//串口使能
@@ -62,7 +62,7 @@ void esp8266_Init(void)
     Delay_ms(1000);
 }
 
-// 向 ESP8266 发送网页内容
+// 通过AP模式发送网页内容
 void esp8266_SendWebpage(uint8_t temp, uint8_t humi)
 {
     char webpage[512]; // 网页内容
@@ -92,7 +92,7 @@ void esp8266_SendWebpage(uint8_t temp, uint8_t humi)
         USART1_SendString(chunk);
         Delay_ms(100);  // 可调整延迟时间，确保不会发生溢出
     }
-	//容器满  则清空数组
+	//容器满  则清空数组  避免覆盖原数据
 	if(strlen(webpage) >= 300) webpage[0] = '\0';
 	if(strlen(http) >= 512) webpage[0] = '\0';
 	Delay_ms(100);
