@@ -26,25 +26,6 @@
 
 ---
 
-## 🖥 网页内容示例
-
-```html
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="2">
-  <title>温湿度监测</title>
-</head>
-<body>
-  <h1>🌡 温湿度实时监测</h1>
-  <p>温度: 25&nbsp;&deg;C</p>
-  <p>湿度: 48%</p>
-</body>
-</html>
-```
-
----
 
 ## 📦 Flash 存储说明
 
@@ -71,30 +52,12 @@
 
 ---
 
-## 📈 后续拓展建议
+## 📈 后续拓展
 
 - 增加 MQTT / Blynk 云平台接入
 - 网页端实时曲线图显示（温湿度变化趋势）
-- 使用 SD 卡保存大规模历史数据
+- 使用 EEPROM 保存大规模历史数据
 - 移植至 FreeRTOS 多任务系统
 - 添加蓝牙通信或移动端 App 支持
 
 ---
-
-## 📁 文件结构
-
-```bash
-.
-├── DHT11/                  # DHT11 驱动模块
-├── OLED/                   # OLED 显示驱动
-├── ESP8266/                # ESP8266 AT 指令交互
-├── Flash/                  # Flash 读写与历史记录
-├── main.c                  # 主程序入口
-├── flash_history.c/.h      # Flash 模块源文件
-├── usart.c/.h              # 串口通信驱动
-└── README.md               # 项目说明文件
-```
-
----
-
-
